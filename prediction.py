@@ -1,24 +1,27 @@
 #!/usr/bin/python
+
 """ This script implements the Prediction class for Song-Based Recommendation Algorithms
 - References :
 * Item-Based Top-N Recommendation Algorithms - Mukund Deshpande, George Karypis
 * Evalluation of Item-Based Top-N Recommendation Algorithms - George Karypis
 * Finding Similar Items, Chapter 3 - Mining of Massive Datasets - Anand Rajaraman, Jeffery D. Ullman
 """
+
 import utilities, math
 import numpy as np
 
-class Prediction:
+class SongBasedPrediction:
    
-    def __init__(self, _R, _alpha = 0.5):
+    def __init__(self, _R, _alpha = 0.5, _sim = 0):
         """ Initialize class Prediction
         - param :
                 R      : train songs set
                 alpha  : default equals 0.5
         """
-        print "creating prediction"
+        print "Creating Prediction"
         self.R = _R
         self.alpha = _alpha
+        self.sim = _sim
         
     def cosine_similarity(self,i,j):
         """ Compute Cosine-Based Similarity between song i and song j
@@ -74,12 +77,15 @@ class Prediction:
             for u_song in user_songs:
                 if not (u_song in self.R):
                     continue
-                sim = self.similarity(song,u_song)
+                if self.sim == 0:
+                    sim = self.cosine_similarity(song,u_song)
+                if self.sim == 1:
+                    sim = self.similarity(song,u_song)
                 # we fix the locality-sensitive param at 2
                 scores[song] += math.pow(sim,2)
             
             # if scores[song] > 0:
-                # print song,scores[song]
+            #    print song,scores[song]
         
         return scores
 
