@@ -89,3 +89,27 @@ class SongBasedPrediction:
         
         return scores
 
+class UserBasedPrediction():
+    """ This class implements the User Based Prediction """
+    def __init__(self, _M, _alpha = 0):
+        self.M = _M
+        self.alpha = _alpha
+
+    def score(self,user_songs,  all_songs):
+        scores= dict()
+
+        for u_tr in self.M:
+            print u_tr
+            if not u_tr in self.M:
+                continue
+            w = float(len(self.M[u_tr] & user_songs))
+            if w > 0:
+                freqi = len(user_songs)
+                freqj = len(self.M[u_tr])
+                w /= (math.pow(freqi,self.alpha) * (math.pow(freqj,(1.0 - self.A))))
+            for s in self.M[u_tr]:
+                if s in scores:
+                    scores[s]+=w
+                else:
+                    scores[s]=w
+        return scores
