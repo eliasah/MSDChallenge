@@ -1,16 +1,15 @@
 #!/usr/bin/python
 
-""" This script implements the Prediction class for Song-Based Recommendation Algorithms
-- References :
-* Item-Based Top-N Recommendation Algorithms - Mukund Deshpande, George Karypis
-* Evalluation of Item-Based Top-N Recommendation Algorithms - George Karypis
-* Finding Similar Items, Chapter 3 - Mining of Massive Datasets - Anand Rajaraman, Jeffery D. Ullman
-"""
-
 import utilities, math
 import numpy as np
 
 class SongBasedPrediction:
+    """ This script implements the Prediction class for Song-Based Recommendation Algorithms
+    - References :
+    * Item-Based Top-N Recommendation Algorithms - Mukund Deshpande, George Karypis
+    * Evalluation of Item-Based Top-N Recommendation Algorithms - George Karypis
+    * Finding Similar Items, Chapter 3 - Mining of Massive Datasets - Anand Rajaraman, Jeffery D. Ullman
+    """
    
     def __init__(self, _R, _alpha = 0.5, _sim = 0):
         """ Initialize class Prediction
@@ -98,16 +97,16 @@ class UserBasedPrediction():
     def score(self,user_songs,  all_songs):
         scores= dict()
 
-        for u_tr in self.M:
-            print u_tr
-            if not u_tr in self.M:
+        for user in self.M:
+            print user
+            if not user in self.M:
                 continue
-            w = float(len(self.M[u_tr] & user_songs))
+            w = float(len(self.M[user] & user_songs))
             if w > 0:
                 freqi = len(user_songs)
-                freqj = len(self.M[u_tr])
+                freqj = len(self.M[user])
                 w /= (math.pow(freqi,self.alpha) * (math.pow(freqj,(1.0 - self.A))))
-            for s in self.M[u_tr]:
+            for s in self.M[user]:
                 if s in scores:
                     scores[s]+=w
                 else:
