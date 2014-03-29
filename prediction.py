@@ -4,7 +4,7 @@ import utilities, math
 import numpy as np
 
 class SongBasedPrediction:
-    """ This script implements the Prediction class for Song-Based Recommendation Algorithms
+    """ This script implements the SongBasedPrediction class
     - References :
     * Item-Based Top-N Recommendation Algorithms - Mukund Deshpande, George Karypis
     * Evalluation of Item-Based Top-N Recommendation Algorithms - George Karypis
@@ -89,23 +89,34 @@ class SongBasedPrediction:
         return scores
 
 class UserBasedPrediction():
-    """ This class implements the User Based Prediction """
+    """ This script implements the UserBasedPrediction class 
+    - Reference : 
+    * Fouille de donnée et aide a la decision - Cours d'introduction au datamining - Anne-Claire Haury"""
+
     def __init__(self, _M, _alpha = 0):
         self.M = _M
         self.alpha = _alpha
 
     def score(self,user_songs,  all_songs):
+        """ This function computes scores for each each user using user based similarity 
+        - param:
+                user_songs : user songs vector
+                all_songs  : training songs set
+        """
         scores= dict()
 
         for user in self.M:
-            print user
             if not user in self.M:
                 continue
+            
+            # compute similarity
             w = float(len(self.M[user] & user_songs))
             if w > 0:
                 freqi = len(user_songs)
                 freqj = len(self.M[user])
                 w /= (math.pow(freqi,self.alpha) * (math.pow(freqj,(1.0 - self.A))))
+            
+            # adding scores
             for s in self.M[user]:
                 if s in scores:
                     scores[s]+=w
