@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import random, math
 # if you want to use the print_result() function, please add your key and comment the next line
 import echo_key 
@@ -60,9 +63,9 @@ def song_to_users(file):
     with open(file,"r") as f:
         for line in f:
             user,song,_ = line.strip().split('\t')
-            if song in d:
+            try:
                 d[song].add(user)
-            else:
+            except:
                 d[song]=set([user])
     return d
 
@@ -72,9 +75,9 @@ def user_to_songs(file):
     with open(file,"r") as f:
         for line in f:
             user,song,_ = line.strip().split('\t')
-            if user in d:
+            try:
                 d[user].add(song)
-            else:
+            except:
                 d[user]=set([song])
     return d
 

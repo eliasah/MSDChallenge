@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 """ This scripts implements the Recommender class for Item-Based Recommendation Algorithms:
 - References :

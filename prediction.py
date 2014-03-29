@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import utilities, math
 import numpy as np
@@ -91,7 +92,7 @@ class SongBasedPrediction:
 class UserBasedPrediction():
     """ This script implements the UserBasedPrediction class 
     - Reference : 
-    * Fouille de donnée et aide a la decision - Cours d'introduction au datamining - Anne-Claire Haury"""
+    * Fouille de données et aide à la decision - Cours d'introduction au datamining - Anne-Claire Haury"""
 
     def __init__(self, _M, _alpha = 0):
         self.M = _M
