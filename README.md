@@ -39,4 +39,5 @@ The taste subset is composed of more than 48 million triplets (user, song, liste
 [2]: http://en.wikipedia.org/wiki/International_Society_for_Music_Information_Retrieval "ISMIR - The International Society for Music Information retreival"
 [3]: http://cosmal.ucsd.edu/~gert/papers/msdc.pdf "The Million Song Dataset Challenge - B. McFee, T. Bertin-Mahieux, D. Ellis and G. Lanckriet, AdMIRe"
 
-
+## License
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">MSDChallenge</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/eliasah" property="cc:attributionName" rel="cc:attributionURL">Abou Haydar Elias</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
