@@ -1,3 +1,5 @@
-numpy
-pymongo
-pyechonest
+numpy==1.11.3
+pyechonest==9.0.0
+pymongo==3.3.0
+scipy==0.18.1
+
